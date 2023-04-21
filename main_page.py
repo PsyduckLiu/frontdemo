@@ -10,9 +10,11 @@ import altair as alt
 @st.cache_data
 def load_data():
     yf.pdr_override()
-    BTC=wb.DataReader('BTC-USD',start='2018-1-1', proxy="http://127.0.0.1:10809")
+    # BTC=wb.DataReader('BTC-USD',start='2018-1-1', proxy="http://127.0.0.1:10809")
+    BTC=wb.DataReader('BTC-USD',start='2018-1-1')
     BTC.info()
-    ETH=wb.DataReader('ETH-USD',start='2018-1-1', proxy="http://127.0.0.1:10809")
+    # ETH=wb.DataReader('ETH-USD',start='2018-1-1', proxy="http://127.0.0.1:10809")
+    ETH=wb.DataReader('ETH-USD',start='2018-1-1')
     ETH.info()
     price_BTC = BTC['Adj Close']
     price_ETH = ETH['Adj Close']
