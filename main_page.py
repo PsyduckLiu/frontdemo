@@ -12,8 +12,8 @@ from pandas_datareader import data as wb
 from scipy.stats import norm
 from MC_new import AsianPriceOption, VanillaOption
 
-os.environ["http_proxy"]="http://127.0.0.1:10809"
-os.environ["https_proxy"]="http://127.0.0.1:10809"
+# os.environ["http_proxy"]="http://127.0.0.1:10809"
+# os.environ["https_proxy"]="http://127.0.0.1:10809"
 
 tab1, tab2, tab3 = st.tabs(["Parameters", "All Options Data", "Selected Options Data"])
 
