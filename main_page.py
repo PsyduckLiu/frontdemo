@@ -6,6 +6,10 @@ import datetime
 
 tab1, tab2, tab3 = st.tabs(["Parameters", "All Options Data", "Selected Options Data"])
 
+def LoadDates():
+    expiration_date = yf.Ticker(st.session_state['symbol']).options
+    st.session_state.expiration_date = expiration_date
+    
 def LoadOptions():
     option_data_all = yf.Ticker(st.session_state['symbol']).option_chain(date=st.session_state['expirationDate'])
     calls = option_data_all.calls
@@ -16,18 +20,20 @@ def LoadOptions():
     st.session_state.option_data = option_data
 
 tab1.header("Select Parameters")
-tab1.date_input(
-    "Enter Expiration Date",
-    datetime.date(2022, 5, 26),
-    on_change=LoadOptions,
-    key='expirationDate'
-)
 tab1.text_input(
     "Enter A Underlying Symbol",
     placeholder="QQQ",
-    on_change=LoadOptions,
+    on_change=LoadDates,
     key='symbol'
 )
+
+if 'expiration_date' in st.session_state:
+    tab1.date_input(
+        "Enter Expiration Date",
+        options=st.session_state.expiration_date,
+        on_change=LoadOptions,
+        key='expirationDate'
+    )
 
 if 'option_data' in st.session_state:
 #     st.session_state.selectedOption = tab1.selectbox(
