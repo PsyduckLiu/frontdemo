@@ -9,7 +9,6 @@ import datetime
 from wallstreet import Stock, Call, Put
 from pandas_datareader import data as wb
 from scipy.stats import norm
-from MC_new import AsianPriceOption, VanillaOption
 
 tab1, tab2, tab3 = st.tabs(["Parameters", "All Options Data", "Selected Options Data"])
 
