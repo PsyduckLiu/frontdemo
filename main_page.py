@@ -7,7 +7,6 @@ import yfinance as yf
 import altair as alt
 import datetime
 import os
-from wallstreet import Stock, Call, Put
 from pandas_datareader import data as wb
 from scipy.stats import norm
 from MC_new import AsianPriceOption, VanillaOption
