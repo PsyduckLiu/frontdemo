@@ -29,7 +29,7 @@ tab1.text_input(
 )
 
 if 'expirations' in st.session_state:
-    tab1.date_input(
+    tab1.selectbox(
         "Enter Expiration Date",
         options=st.session_state.expirations,
         on_change=LoadOptions,
