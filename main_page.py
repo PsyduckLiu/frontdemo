@@ -7,8 +7,9 @@ import datetime
 tab1, tab2, tab3 = st.tabs(["Parameters", "All Options Data", "Selected Options Data"])
 
 def LoadDates():
-    expiration_date = yf.Ticker(st.session_state['symbol']).options
-    st.session_state.expiration_date = expiration_date
+    expirations = yf.Ticker(st.session_state['symbol']).options
+    st.session_state.expirations = expirations
+    print(expirations)
     
 def LoadOptions():
     option_data_all = yf.Ticker(st.session_state['symbol']).option_chain(date=st.session_state['expirationDate'])
@@ -27,10 +28,10 @@ tab1.text_input(
     key='symbol'
 )
 
-if 'expiration_date' in st.session_state:
+if 'expirations' in st.session_state:
     tab1.date_input(
         "Enter Expiration Date",
-        options=st.session_state.expiration_date,
+        options=st.session_state.expirations,
         on_change=LoadOptions,
         key='expirationDate'
     )
